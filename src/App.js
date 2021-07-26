@@ -1,12 +1,14 @@
 import Categories from "./components/Categories";
+import Navbar from "./components/Navbar";
 import Swiper from "./components/Swiper";
 import { ProductProvider } from "./context/ProductContext";
 
 function App() {
   return (
-    <div className="App bg-gray-200 h-screen">
+    <div className="bg-gray-200 h-screen">
       <ProductProvider>
-        <div className="p-12 bg-gray-50 grid place-items-start grid-rows-3 grid-flow-col gap-4 ">
+        <Navbar />
+        <div className="container mx-auto p-8 bg-gray-50 grid place-items-start grid-rows-3 grid-flow-col gap-4 ">
           <Categories />
           <Swiper />
         </div>

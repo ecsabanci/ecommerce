@@ -8,7 +8,7 @@ function Categories() {
     setCurrentCategory(e.target.id);
   };
 
-  console.log(category);
+  // console.log(category);
 
   return (
     <div className="row-span-3 col-span-3 sm:col-span-5 h-60 ">

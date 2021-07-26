@@ -5,11 +5,17 @@ import "swiper/swiper.min.css";
 import SwiperCore, { Pagination } from "swiper/core";
 
 import { useProduct } from "../context/ProductContext";
+// import { useEffect } from "react";
 
 SwiperCore.use([Pagination]);
 
 export default function App() {
-  const { category, currentCategory } = useProduct();
+  const { category, currentCategory, cart, setCart } = useProduct();
+
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+    console.log(cart);
+  };
 
   return (
     <>
@@ -84,7 +90,7 @@ export default function App() {
                   <span className="flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5"
+                      className="h-5 w-5"
                       viewBox="0 0 20 20"
                       fill="rgba(4,120,87)"
                     >
@@ -95,7 +101,10 @@ export default function App() {
                   </span>
                 )}{" "}
               </aside>
-              <button className="bg-blue-500 focus:bg-blue-600 text-white p-2 rounded-md">
+              <button
+                onClick={() => addToCart(item)}
+                className="bg-blue-500 focus:bg-blue-600 text-white p-2 rounded-md"
+              >
                 Sepete Ekle
               </button>
             </div>

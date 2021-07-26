@@ -4,6 +4,8 @@ import product from "../products.json";
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
+
   const [category, setCategory] = useState(product.responses[0][0]["params"]);
 
   const [currentCategory, setCurrentCategory] = useState("Size Özel");
@@ -13,6 +15,8 @@ export const ProductProvider = ({ children }) => {
     setCategory,
     currentCategory,
     setCurrentCategory,
+    cart,
+    setCart,
   };
 
   return (
