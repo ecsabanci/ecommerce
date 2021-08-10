@@ -2,17 +2,48 @@ import Categories from "./components/Categories";
 import Navbar from "./components/Navbar";
 import Swiper from "./components/Swiper";
 import { ProductProvider } from "./context/ProductContext";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Cart from "./components/Cart";
 
 function App() {
   return (
     <div className="bg-gray-200 h-screen">
       <ProductProvider>
-        <Navbar />
-        <div className="container mx-auto p-8 bg-gray-50 grid place-items-start grid-rows-3 grid-flow-col gap-4 ">
-          <Categories />
-          <Swiper />
-        </div>
+        <Router>
+          <div>
+            <Navbar />
+
+            <div id="content">
+              <Switch>
+                {/* <Route path="/">
+              <div className="container mx-auto p-8 bg-gray-50 grid place-items-start grid-rows-3 grid-flow-col gap-4 ">
+                <Categories />
+                <Swiper />
+              </div>
+            </Route> */}
+
+                <Route path="/cart" component={Cart}></Route>
+                <Route path="/" component={Home}></Route>
+
+                {/* <Link to="/cart">CART</Link>
+        <Link to="/">MAIN</Link> */}
+                {/* <div className="container mx-auto p-8 bg-gray-50 grid place-items-start grid-rows-3 grid-flow-col gap-4 "> */}
+
+                {/* </div> */}
+              </Switch>
+            </div>
+          </div>
+        </Router>
       </ProductProvider>
+    </div>
+  );
+}
+
+function Home() {
+  return (
+    <div className="container mx-auto p-8 bg-gray-50 grid place-items-start grid-rows-3 grid-flow-col gap-4 ">
+      <Categories />
+      <Swiper />
     </div>
   );
 }
