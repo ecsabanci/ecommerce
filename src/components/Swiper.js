@@ -13,10 +13,27 @@ export default function App() {
   const { category, currentCategory, cart, setCart } = useProduct();
 
   const addToCart = (item) => {
+    // item.amount = 1;
+    // const checkCart = cart.find((product) => product.id === item.id);
+
+    // if (checkCart) {
+    //   console.log("sameprod");
+    //   checkCart.amount += 1;
+    //   setCart([...cart.filter((product) => product.id !== item.id), checkCart]);
+    // } else {
+    //   setCart([...cart], {
+    //     id: item.id,
+    //     image: item.image,
+    //     inStock: item.inStock,
+    //     name: item.name,
+    //     price: item.priceText,
+    //     url: item.url,
+    //     amount: 1,
+    //   });
+    // }
+    console.log(item);
     setCart([...cart, item]);
   };
-
-  console.log(cart);
 
   return (
     <>

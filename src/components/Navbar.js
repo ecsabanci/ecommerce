@@ -66,7 +66,7 @@ function Navbar() {
                 <p className="hidden lg:flex">Konum Seç</p>{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-3 w-3 ml-1"
+                  className="h-4 w-4 ml-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -81,7 +81,7 @@ function Navbar() {
               </small>
             </span>
           </li>
-          <li className="group relative flex items-center border-2 border-gray-400 px-3 py-1 rounded-md ml-6 mr-3">
+          <li className="group relative bg-yellow-500 flex items-center border-2 border-gray-400 px-3 py-1 rounded-md ml-6 mr-3">
             <div className="opacity-0 invisible absolute z-10 top-full right-0 w-44 rounded p-1 space-y-1 bg-gray-400 group-hover-within:opacity-100 group-focus-within:visible transition-all">
               <a
                 href="a"
@@ -120,7 +120,7 @@ function Navbar() {
               className="h-7 w-7"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke="#ffff"
             >
               <path
                 strokeLinecap="round"
@@ -138,7 +138,7 @@ function Navbar() {
               className="h-5 w-5 ml-1"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="#919191"
+              stroke="#ffff"
             >
               <path
                 strokeLinecap="round"
@@ -148,7 +148,7 @@ function Navbar() {
               />
             </svg>
           </li>
-          <li className="flex items-center border-2 border-gray-400 px-3 py-1 rounded-md bg-gray-400 text-white">
+          <li className="flex items-center border-2 border-gray-400 px-3 py-1 rounded-md bg-green-600 text-white">
             <span className="relative">
               <Link to="/cart">
                 <svg
@@ -165,7 +165,7 @@ function Navbar() {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span className="absolute w-6 h-6 font-medium text-center align-middle -top-2 -right-1 bg-gray-50 text-gray-400 rounded-full">
+                <span className="absolute w-6 h-6 font-medium text-center align-middle -top-2 -right-1 bg-gray-50 text-gray-500 rounded-full">
                   {cart.length}
                 </span>
               </Link>
