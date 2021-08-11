@@ -3,7 +3,8 @@ import { useProduct } from "../context/ProductContext";
 
 function Cart() {
   const { cart, setCart } = useProduct();
-  const { price, setPrice } = useState(0);
+  const [price, setPrice] = useState(0);
+  const [condition, setCondition] = useState(true);
 
   const removeFromCart = (item) => {
     const filteredCart = cart.filter(
@@ -13,19 +14,17 @@ function Cart() {
     setCart(filteredCart);
   };
 
-  // useEffect(() => {
-  //   // const sum = cart.reduce((total, currentVal) => {
-  //   //   return total + currentVal.price;
-  //   // }, 0);
-  //   setPrice(
-  //     cart.reduce((total, currentVal) => {
-  //       return total + currentVal.price;
-  //     }, 0)
-  //   );
-  // }, [cart]);
+  useEffect(() => {
+    let sum = cart.reduce((total, currentVal) => {
+      return total + currentVal.price;
+    }, 0);
+
+    sum = sum.toLocaleString(undefined, { minimumFractionDigits: 2 });
+    setPrice(sum);
+  }, [cart]);
 
   return cart.length ? (
-    <div className="p-8 flex items-start justify-between">
+    <div className="p-8 relative h-screen flex items-start justify-between">
       <div className="grid grid-cols-6 gap-4">
         {cart.map((item, key) => (
           <div className="card" key={key}>
@@ -39,7 +38,7 @@ function Cart() {
 
                 <button
                   onClick={() => removeFromCart(item)}
-                  className="text-red-700 transform motion-safe:hover:scale-110 focus:bg-transparent active:bg-transparent absolute -right-1 -top-1 focus:bg-blue-600 text-white"
+                  className="text-red-900 transform motion-safe:hover:scale-110 focus:bg-transparent active:bg-transparent absolute -right-2 -top-2 focus:bg-blue-600 text-white"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +74,7 @@ function Cart() {
           </div>
         ))}
       </div>
-      <div className="totalCharge py-2 rounded-lg bg-gray-50 ml-3">
+      <div className="totalChargeLg py-2 rounded-lg bg-gray-50 ml-3">
         {" "}
         <div className="px-8">
           <h3 className="font-medium text-sm w-40 text-gray-400">
@@ -83,7 +82,7 @@ function Cart() {
           </h3>{" "}
           <p className="text-2xl my-2 font-medium text-gray-800 tracking-wider">
             {" "}
-            14.311,38 <span className="text-base">TL</span>{" "}
+            {price} <span className="text-base">TL</span>{" "}
           </p>
           <span className="bg-indigo-500 p-2 text-center font-medium text-white rounded-lg block">
             <a href="#">Alışverişi tamamla</a>
@@ -105,11 +104,20 @@ function Cart() {
           <span className="flex mt-2 items-center justify-between">
             <p className="font-medium text-sm text-gray-500">Ürünler</p>
             <p className="text-sm font-medium text-gray-500">
-              14.298,39 <span className="text-xs">TL</span>
+              {price +
+                (12.99).toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                })}{" "}
+              <span className="text-xs">TL</span>
             </p>
           </span>
         </div>
-        <button className="bg-red-200 text-red-900 font-medium p-2 rounded-lg mx-auto my-5 w-2/3 flex items-center">
+        <button
+          onClick={() => setCondition(!condition)}
+          className={`${
+            condition ? "flex" : "hidden"
+          } bg-red-200 h-18 text-red-900 font-medium p-2 rounded-lg mx-auto my-5 w-2/3  items-center`}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -126,6 +134,33 @@ function Cart() {
           </svg>
           <p className="ml-1 text-left">Hediye çeki kullan</p>
         </button>
+        <div
+          className={`${condition ? "hidden" : "flex"} relative items-center`}
+        >
+          <input
+            type="text"
+            className="bg-red-100 text-red-900 active:outline-none focus:outline-none font-medium p-2 rounded-lg mx-auto my-5 w-2/3 flex items-center"
+          />
+          <button
+            onClick={() => setCondition(!condition)}
+            className="absolute  flex items-center justify-center right-8 rounded-r-lg bg-blue-200 h-1/2 w-8"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   ) : (
