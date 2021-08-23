@@ -202,7 +202,9 @@ function Cart() {
       </div>
     </div>
   ) : (
-    <p className="bg-indigo-100 p-8 text-2xl font-medium">Sepetiniz Boş</p>
+    <p className="bg-indigo-100 p-8 text-2xl font-medium w-screen">
+      Sepetiniz Boş
+    </p>
   );
 }
 

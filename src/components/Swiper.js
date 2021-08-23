@@ -1,16 +1,23 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/swiper.min.css";
-// import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { Pagination } from "swiper/core";
-
 import { useProduct } from "../context/ProductContext";
-// import { useEffect } from "react";
+import Modal from "./Modal";
+import { useState } from "react";
 
 SwiperCore.use([Pagination]);
 
 export default function App() {
   const { category, currentCategory, cart, setCart } = useProduct();
+
+  const [isAdded, setIsAdded] = useState(false);
+
+  const showModal = () => {
+    setIsAdded(true);
+    setTimeout(() => {
+      setIsAdded(false);
+    }, 1000);
+  };
 
   const addToCart = (item) => {
     const checkCart = cart.find(
@@ -30,6 +37,7 @@ export default function App() {
 
   return (
     <>
+      {isAdded ? <Modal /> : ""}
       <Swiper
         slidesPerView={1}
         spaceBetween={5}
@@ -113,7 +121,7 @@ export default function App() {
                 )}{" "}
               </aside>
               <button
-                onClick={() => addToCart(item)}
+                onClick={() => [addToCart(item), showModal()]}
                 className="bg-blue-500 focus:bg-blue-600 text-white p-2 rounded-md"
               >
                 Sepete Ekle
