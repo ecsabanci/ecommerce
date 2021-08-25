@@ -1,11 +1,12 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
-import SwiperCore, { Pagination } from "swiper/core";
+import SwiperCore, { Pagination, Navigation } from "swiper/core";
 import { useProduct } from "../context/ProductContext";
 import Modal from "./Modal";
 import { useState } from "react";
 
 SwiperCore.use([Pagination]);
+SwiperCore.use([Navigation]);
 
 export default function App() {
   const { category, currentCategory, cart, setCart } = useProduct();
@@ -39,6 +40,7 @@ export default function App() {
     <>
       {isAdded ? <Modal /> : ""}
       <Swiper
+        navigation={true}
         slidesPerView={1}
         spaceBetween={5}
         pagination={{

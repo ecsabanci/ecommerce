@@ -8,7 +8,7 @@ function Navbar() {
   return (
     <div className="container p-5 mx-auto flex items-center justify-between">
       <div className="logo">
-        <h1 className="text-4xl font-bold text-yellow-500">
+        <h1 className="text-4xl font-bold text-yellow-600">
           <Link to="/">hepsiburda</Link>
         </h1>
       </div>
@@ -62,7 +62,7 @@ function Navbar() {
             </svg>
             <span className="ml-2">
               <p className="hidden lg:flex">Konum</p>
-              <small className="flex items-center text-yellow-600">
+              <small className="flex items-center">
                 <p className="hidden lg:flex">Konum Seç</p>{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +81,7 @@ function Navbar() {
               </small>
             </span>
           </li>
-          <li className="group relative bg-yellow-500 flex items-center border-2 border-gray-400 px-3 py-1 rounded-md ml-6 mr-3">
+          <li className="group relative bg-gray-200 flex items-center border-2 border-gray-400 px-3 py-1 rounded-md ml-6 mr-3">
             <div className="opacity-0 invisible absolute z-10 top-full right-0 w-44 rounded p-1 space-y-1 bg-gray-400 group-hover-within:opacity-100 group-focus-within:visible transition-all">
               <a
                 href="a"
@@ -120,7 +120,7 @@ function Navbar() {
               className="h-7 w-7"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="#ffff"
+              stroke="#000"
             >
               <path
                 strokeLinecap="round"
@@ -130,8 +130,12 @@ function Navbar() {
               />
             </svg>
             <span className="ml-2 flex flex-col">
-              <p className="font-medium hidden lg:flex">Hesabım</p>{" "}
-              <small className="hidden lg:flex">Emre Çağrı...</small>{" "}
+              <Link to="/login">
+                <p className="font-medium hidden lg:flex">Hesabım</p>{" "}
+                <small className="hidden lg:flex truncate w-16">
+                  Emre Çağrı
+                </small>{" "}
+              </Link>
             </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +152,7 @@ function Navbar() {
               />
             </svg>
           </li>
-          <li className="flex items-center border-2 border-gray-400 px-3 py-1 rounded-md bg-green-600 text-white">
+          <li className="flex items-center border-2 border-gray-400 px-3 py-1 rounded-md bg-yellow-600 text-white">
             <span className="relative">
               <Link to="/cart">
                 <svg
